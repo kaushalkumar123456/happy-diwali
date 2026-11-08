@@ -1,0 +1,23 @@
+KAUSHAL KUMAR — FREE DIWALI EMAIL SURPRISE
+
+WHAT IS INCLUDED
+- diwali-card.gif: animated card to insert directly into an email (email apps that support GIF animation will play it).
+- index.html: interactive surprise page with a gift button and fireworks.
+
+PUBLISH THE INTERACTIVE PAGE FREE
+1. Extract this ZIP file.
+2. Open https://app.netlify.com/drop and sign in/create a free account.
+3. Drag the extracted "site" folder onto the Netlify Drop page.
+4. Copy the public website address Netlify creates (it ends in netlify.app).
+
+SEND THE EMAIL
+1. Open Gmail and click Compose.
+2. Subject: A little Diwali surprise for you! 🪔
+3. Insert the animated GIF: click Insert photo and upload diwali-card.gif.
+4. Add this line below it: "Your special surprise is waiting — click here: YOUR_NETLIFY_LINK"
+5. Replace YOUR_NETLIFY_LINK with your published Netlify address, then send.
+
+IMPORTANT
+- The GIF can animate in the email itself, depending on the recipient's email app/settings.
+- The interactive gift-opening fireworks happen after the recipient clicks the website link. Email apps block scripts/React inside email for security, so the full interactive experience cannot run directly inside Gmail.
+- The page uses plain HTML/CSS/JavaScript (no React setup required), so it is simpler and loads without external libraries.
