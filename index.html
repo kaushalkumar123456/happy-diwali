@@ -19,20 +19,24 @@ canvas{position:fixed;inset:0;pointer-events:none;width:100%;height:100%}
 </style></head><body><canvas id="fx"></canvas><main class="card">
 <div class="small">A FESTIVE SURPRISE FOR YOU</div><div class="diyas">🪔 ✨ 🪔</div>
 <section id="start"><h1>Happy Diwali!</h1><p>A little light, a little love, and a special surprise just for you.</p>
-<button id="open">🎁 Open Your Diwali Gift</button><p class="small">Tap to reveal your wishes and fireworks</p></section>
+<button id="open">🎁 Open Your Diwali Gift</button>
+<p class="small">Tap to reveal your wishes and fireworks</p></section>
 <section id="reveal" aria-live="polite"><div class="gift">🎁</div><h1>Shubh Deepawali!</h1>
 <p>May every diya bring new hope, every sparkle bring a smile, and every moment shine with happiness, peace, good health and prosperity.</p>
 <div class="diyas">🪔 🌟 🪔</div><h2 style="color:#ffda7b">With warm wishes,<br>Kaushal Kumar</h2>
 <button id="again">Celebrate Again ✨</button></section>
 </main>
+<audio id="bgMusic" loop preload="auto" src="diwali-song.mp3"></audio>
 <script>
 const c=document.getElementById('fx'),x=c.getContext('2d');let w,h,parts=[];
+const music=document.getElementById('bgMusic');
+function playMusic(){if(!music)return;music.volume=0.45;if(music.paused){music.play().catch(()=>{})}}
 function size(){w=innerWidth;h=innerHeight;c.width=w*devicePixelRatio;c.height=h*devicePixelRatio;x.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}
 addEventListener('resize',size);size();
 function burst(){let cx=60+Math.random()*(w-120),cy=40+Math.random()*h*.55,colors=['#ffda72','#ff8d36','#fff0b2','#f28ac2'];
 for(let i=0;i<65;i++){let a=i*Math.PI*2/65,s=1+Math.random()*4;parts.push({x:cx,y:cy,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:65,col:colors[i%4]})}}
 function tick(){x.clearRect(0,0,w,h);parts=parts.filter(p=>p.life-->0);for(let p of parts){p.x+=p.vx;p.y+=p.vy;p.vy+=.035;x.globalAlpha=Math.max(0,p.life/65);x.fillStyle=p.col;x.beginPath();x.arc(p.x,p.y,2,0,7);x.fill()}x.globalAlpha=1;requestAnimationFrame(tick)}tick();
 function party(){for(let i=0;i<7;i++)setTimeout(burst,i*220)}
-document.getElementById('open').onclick=()=>{document.getElementById('start').style.display='none';document.getElementById('reveal').classList.add('show');party()};
-document.getElementById('again').onclick=party;
+document.getElementById('open').onclick=()=>{document.getElementById('start').style.display='none';document.getElementById('reveal').classList.add('show');party();playMusic();};
+document.getElementById('again').onclick=()=>{party();playMusic();};
 </script></body></html>
